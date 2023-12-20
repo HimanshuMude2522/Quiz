@@ -179,11 +179,11 @@ function pushToFirestore(score) {
     // Use your Firestore collection and document references
     var firestore = firebase.firestore();
     var collectionRef = firestore.collection('users');
-    var documentRef = collectionRef.doc('games_score');
+    var documentRef = collectionRef.doc('2Q1R1apl82MeePmSzWeY');
 
     // Push the final score to Firestore
     documentRef.set({
-        game_score: score
+        quiz_score: score
     })
         .then(function () {
             console.log('Final score pushed to Firestore:', score);
