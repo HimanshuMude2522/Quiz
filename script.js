@@ -182,12 +182,9 @@ function pushToFirestore(quizScore) {
     var usersCollectionRef = firestore.collection('users');
     var userDocumentRef = usersCollectionRef.doc('2Q1R1apl82MeePmSzWeY');
 
-    // Create a subcollection reference for quiz scores
-    var scoresCollectionRef = userDocumentRef.collection('scores');
-
-    // Add a new document under the 'scores' subcollection with quiz score details
-    scoresCollectionRef.add({
-        quiz_score: quizScore
+    // Add a new document under the 'users' collection with quiz score details
+    userDocumentRef.add({
+        quizScore: quizScore
         // Add any other details you want to store for each quiz score
     })
         .then(function (docRef) {
