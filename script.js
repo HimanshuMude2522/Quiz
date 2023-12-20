@@ -187,7 +187,6 @@ function pushToFirestore(quizScore) {
 
     // Add a new document under the 'scores' subcollection with quiz score details
     scoresCollectionRef.add({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         quiz_score: quizScore
         // Add any other details you want to store for each quiz score
     })
