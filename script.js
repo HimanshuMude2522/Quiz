@@ -176,28 +176,29 @@ function showResult(){
     pushToFirestore(userScore);
 }
 
-function pushToFirestore(score) {
+function pushToFirestore(quizScore) {
     // Use your Firestore collection and document references
     var firestore = firebase.firestore();
     var usersCollectionRef = firestore.collection('users');
     var userDocumentRef = usersCollectionRef.doc('2Q1R1apl82MeePmSzWeY');
 
-    // Create a subcollection reference for quiz attempts
-    var quizAttemptsCollectionRef = userDocumentRef.collection('quiz_attempts');
+    // Create a subcollection reference for quiz scores
+    var scoresCollectionRef = userDocumentRef.collection('scores');
 
-    // Add a new document under the subcollection with quiz attempt details
-    quizAttemptsCollectionRef.add({
+    // Add a new document under the 'scores' subcollection with quiz score details
+    scoresCollectionRef.add({
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        score: score
-        // Add any other details you want to store for each quiz attempt
+        quiz_score: quizScore
+        // Add any other details you want to store for each quiz score
     })
         .then(function (docRef) {
-            console.log('Quiz attempt document created with ID:', docRef.id);
+            console.log('Quiz score document created with ID:', docRef.id);
         })
         .catch(function (error) {
-            console.error('Error creating quiz attempt document:', error);
+            console.error('Error creating quiz score document:', error);
         });
 }
+
 
 function startTimer(time){
     counter = setInterval(timer, 1000);
