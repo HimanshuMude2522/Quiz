@@ -8,7 +8,7 @@
 }
 
 body{
-    background: #5372F0;
+    background: #718bf1;
 }
 
 ::selection{
@@ -381,3 +381,25 @@ footer button.show{
     color: #fff;
     background: #007bff;
 }
+
+
+.header {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-container img {
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    margin-right: 10px;
+  }
+  
+  .name-container span {
+    font-size: 18px; /* Adjust the font size as needed */
+    font-weight: bold;
+    color: #333; /* Adjust the color as needed */
+  }
+  
