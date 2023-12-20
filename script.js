@@ -182,18 +182,19 @@ function pushToFirestore(quizScore) {
     var usersCollectionRef = firestore.collection('users');
     var userDocumentRef = usersCollectionRef.doc('2Q1R1apl82MeePmSzWeY');
 
-    // Add a new document under the 'users' collection with quiz score details
-    userDocumentRef.add({
+    // Set data for the existing document or create a new one if it doesn't exist
+    userDocumentRef.set({
         quizScore: quizScore
         // Add any other details you want to store for each quiz score
+    }, { merge: true })
+    .then(function () {
+        console.log('Quiz score updated successfully');
     })
-        .then(function (docRef) {
-            console.log('Quiz score document created with ID:', docRef.id);
-        })
-        .catch(function (error) {
-            console.error('Error creating quiz score document:', error);
-        });
+    .catch(function (error) {
+        console.error('Error updating quiz score:', error);
+    });
 }
+
 
 
 function startTimer(time){
